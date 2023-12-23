@@ -2,24 +2,24 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-// const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-const dataBaseDeploy = process.env.DATA_BASE_DEPLOY;
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+//const dataBaseDeploy = process.env.DATA_BASE_DEPLOY;
 
 const DriverModel = require("./models/Driver");
 const TeamModel = require("./models/Team");
 
-// const sequelize = new Sequelize(
-//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
-//   {
-//     logging: false,
-//     native: false,
-//   }
-// );
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
+  {
+    logging: false,
+    native: false,
+  }
+);
 
-const sequelize = new Sequelize(dataBaseDeploy, {
-  logging: false,
-  native: false,
-});
+// const sequelize = new Sequelize(dataBaseDeploy, {
+//   logging: false,
+//   native: false,
+// });
 
 // Obtener el nombre del archivo actual
 const basename = path.basename(__filename);

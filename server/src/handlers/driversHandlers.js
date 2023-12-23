@@ -3,7 +3,7 @@ const {
     postDriver,
     getDriverById,
     getDriverByName,
-  } = require("../controllers/driversController");
+  } = require("..//controllers/driversController");
   
   // by name y getAll de api y bdd
   const getDriversHandler = async (req, res) => {

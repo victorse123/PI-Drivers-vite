@@ -4,7 +4,7 @@ const {
   postDriverHandler,
   getDriversHandler,
   getDetailDriverHandler,
-} = require("../handlers/driverHandlers");
+} = require("..//handlers/driversHandlers");
 
 const { getAllTeamsHandler } = require("../handlers/teamHandlers");
 

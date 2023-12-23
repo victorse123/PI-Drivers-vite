@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
     "Team",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
