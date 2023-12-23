@@ -8,8 +8,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const DriverModel = require("./models/Driver");
 const TeamModel = require("./models/Team");
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
   {
     logging: false,
     native: false,
@@ -54,8 +53,9 @@ const { Driver, Team } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Driver.belongsToMany(Team, { through: "DriverTeam", timestamps: false });
-Team.belongsToMany(Driver, { through: "DriverTeam", timestamps: false });
+Driver.belongsToMany(Team, { through: "DriverTeam", });
+Team.belongsToMany(Driver, { through: "DriverTeam", });
+
 
 module.exports = {
   Driver,
