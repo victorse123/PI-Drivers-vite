@@ -38,6 +38,7 @@ fs.readdirSync(path.join(__dirname, "/models"))
 
 // Iterar sobre los modelos y llamar a la función de definición para cada uno
 modelDefiners.forEach((model) => model(sequelize));
+// Capitalizamos los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [
   entry[0][0].toUpperCase() + entry[0].slice(1),
