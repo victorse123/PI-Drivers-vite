@@ -2,23 +2,24 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-//const dataBaseDeploy = process.env.DATA_BASE_DEPLOY;
+// const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const dataBaseDeploy = process.env.DATA_BASE_DEPLOY;
 
 const DriverModel = require("./models/Driver");
 const TeamModel = require("./models/Team");
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
-  {
-    logging: false,
-    native: false,
-  }
-);
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
+//   {
+//     logging: false,
+//     native: false,
+//   }
+// );
 
-// const sequelize = new Sequelize(dataBaseDeploy, {
-//   logging: false,
-//   native: false,
-// });
+const sequelize = new Sequelize(dataBaseDeploy, {
+  logging: false,
+  native: false,
+});
 
 // Obtener el nombre del archivo actual
 const basename = path.basename(__filename);
@@ -37,7 +38,6 @@ fs.readdirSync(path.join(__dirname, "/models"))
 
 // Iterar sobre los modelos y llamar a la función de definición para cada uno
 modelDefiners.forEach((model) => model(sequelize));
-// Capitalizamos los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [
   entry[0][0].toUpperCase() + entry[0].slice(1),
@@ -46,16 +46,13 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 DriverModel(sequelize);
+
 TeamModel(sequelize);
-// En sequelize.models están todos los modelos importados como propiedades
-// Para relacionarlos hacemos un destructuring
+
 const { Driver, Team } = sequelize.models;
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-Driver.belongsToMany(Team, { through: "DriverTeam", });
-Team.belongsToMany(Driver, { through: "DriverTeam", });
-
+Driver.belongsToMany(Team, { through: "DriverTeam", timestamps: false });
+Team.belongsToMany(Driver, { through: "DriverTeam", timestamps: false });
 
 module.exports = {
   Driver,
