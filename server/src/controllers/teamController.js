@@ -1,5 +1,5 @@
 const { Team } = require("../db");
-// const URL = "http://localhost:5000/drivers";
+//const URL = "http://localhost:5000/drivers";
 const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -9,8 +9,16 @@ const URL = process.env.URL_API;
 const getAllTeams = async () => {
   const teamCount = await Team.count();
   if (teamCount === 0) {
-    const { data } = await axios.get(`${URL}`);
-
+    try { 
+      const { data:teamsFromAPI } = await axios.get(`${URL}/teams`);
+        await Promise.all(
+          teamsFromAPI.map(async (team) => {
+            await Team.create({
+              id: team.id,
+              name: team.name,
+            });
+          })
+        );
     const teamsApi = [];
     data.forEach((driver) => {
       if (driver && driver.teams) {
@@ -32,12 +40,48 @@ const getAllTeams = async () => {
       });
     }
   }
-
-  const teamsBDD = await Team.findAll();
-  return teamsBDD;
+     catch (error) { 
+     console.error("Error al obtener lso equipos de la API:", error);
+     throw error;
+     }
+} else {
+  return await Team.findAll();
+}
+  
 };
 
 module.exports = { getAllTeams };
+
+
+// const { Team } = require("../db");
+// const axios = require("axios");
+// const dotenv = require("dotenv");
+// dotenv.config();
+
+// const URL = process.env.URL_API;
+
+// const getAllTeams = async () => {
+//   try {
+//     const teamCount = await Team.count();
+//     if (teamCount === 0) {
+//       const { data: teamsFromAPI } = await axios.get(`${URL}`);
+//       await Promise.all(
+//         teamsFromAPI.map(async (team) => {
+//           await Team.create({
+//             id: team.id,
+//             name: team.name,
+//           });
+//         })
+//       );
+//     }
+//     return await Team.findAll();
+//   } catch (error) {
+//     console.error("Error al obtener los equipos de la API:", error);
+//     throw error;
+//   }
+// };
+
+// module.exports = { getAllTeams };
 
 
 //Este controlador se encarga de obtener todos los equipos de la base de datos local y, en caso de que no haya equipos, los recopila de la API externa y los guarda en la base de datos local. Veamos algunos puntos relevantes:
