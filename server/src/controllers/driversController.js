@@ -188,3 +188,14 @@ const infoCleaner = (array) => {
 };
 
 module.exports = { getDriverById, getAllDrivers, postDriver };
+
+
+// Este controlador realiza varias operaciones de interacción con los controladores y la API externa. Veamos algunas observaciones:
+
+//Método getAllDrivers: Recupera todos los conductores tanto de la base de datos local como de la API externa. Fusiona ambos conjuntos de datos y devuelve un arreglo combinado.
+
+//Método postDriver: Crea un nuevo conductor en la base de datos local junto con los equipos asociados. Utiliza transacciones para garantizar la integridad de los datos.
+
+//Método getDriverById: Obtiene un conductor por su ID, ya sea de la API externa o de la base de datos local. Realiza un manejo adecuado para obtener y estructurar la información según la fuente especificada.
+
+//Función infoCleaner: Limpia la información de la API externa, seleccionando solo los campos necesarios para la aplicación.
