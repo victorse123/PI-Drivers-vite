@@ -1,0 +1,46 @@
+.imageAndDescription {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 1%;
+   }
+   
+     .imageAndDescription img{
+   width: 400px;
+   height: 500px;
+   border-radius: 50px;
+   margin: 2%;
+   }
+   
+   .card {
+       background: transparent;
+       border-radius: 16px;
+       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.253);
+       background-color: #2b2d42d8;
+       border: 1px solid rgba(255, 255, 255, 0.3);
+       position: relative;
+       transition: transform 0.2s;
+       height: auto;
+       margin-top: 2%;
+   width: 800px; 
+   padding-left: 1%;
+   
+     }
+   
+     .card h1 {
+     font-family: 'Orbitron', sans-serif;
+     color: #8D99AE;
+   }
+   
+   .card p {
+       font-family: 'Montserrat', sans-serif; 
+       font-weight: 700;
+     }
+     
+   
+   .title{
+     font-weight: bold;
+     color: #8D99AE;
+     font-size: 1.15em;
+   
+   }
