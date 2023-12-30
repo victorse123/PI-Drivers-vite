@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+    height: 200px;
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(5px); 
+  padding-top: 1%;
+  }
+  
+  .navLink {
+    display: flex;
+    text-decoration: none; /* Para eliminar el subrayado de los enlaces */
+    /* Para agregar un espacio entre los elementos */
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+
+
+.button{
+  border: #EDF2F4 2px solid;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: auto;
+  background-color: #003049;
+  padding: 10px;
+  color: #EDF2F4;
+  font-family: 'Montserrat', sans-serif;
+
+  }
+
+  
+
+  .button:hover{
+    background-color: #EDF2F4;
+    color: #2B2D42 ;
+    border: #2B2D42 solid 3px;
+    
+  }
+    
+  
+  .container{
+    width: 100%;
+    height: 70px;
+    
+  }
+
+
+/* Estilos para tablet (768px ancho o más) */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .navLink{
+    margin-bottom: 10px;
+    margin-top: 6px;
+  }
+}
+
+/* Estilos para celular (480px ancho o más) */
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
