@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import style from './Error.module.css'
-import errorImg from "./error-404.png"
+import errorImg from "./F1-6.jpg";
 import { Link } from "react-router-dom";
 import styles from "../FormPage/FormPage.module.css"
 export default function Error() {
