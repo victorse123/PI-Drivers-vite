@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import styles from "./detail.module.css"
-import defaultImage from './default-image.jpg'
+import styles from "./detail.module.css";
+import defaultImage from './F1-5.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDriverByID } from '../../redux/actions';
 import style from "../Cards/cards.module.css"
