@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Card from "../Card/Card"
-import defaultImage from './default-image.jpg'
+import defaultImage from './F1-4.jpg';
 import styles from "./cards.module.css"
 import { useSelector } from "react-redux";
 
