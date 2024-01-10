@@ -134,7 +134,7 @@ const handleOrder = (e) => {
 
 <select  className={styles.select}  onChange={filterTeams} value={filterTeam}  >
   <option value="" disabled>Select Team</option>
-  {allTeams.map((team) => (
+  {Array.isArray(allTeams) && allTeams.map((team) => (
               <option key={team.id} value={team.name}>
                 {team.name}
               </option>
