@@ -114,7 +114,7 @@ const handleOrder = (e) => {
       <NavBar handlePageChange={handlePageChange} onSearch={onSearch} /> 
       <div  className={styles.selectContainer}>
 
-      <select className={styles.select} onChange={handleOrder} value={filterName} defaultValue="">
+      <select className={styles.select} onChange={handleOrder} value={filterName} >
   <option value="" disabled>Order by name</option>
   <option value='A'>Ascendente</option>
   <option value='B'>Descendente</option>
