@@ -8,9 +8,16 @@ import { useSelector } from "react-redux";
 function Cards({ onClose, currentPage, itemsPerPage, handlePageChange, setCurrentPage }) {
   const indexOfLastDriver = currentPage * itemsPerPage;
   const indexOfFirstDriver = indexOfLastDriver - itemsPerPage;
-  const allDriversCopy = useSelector((state) => state.allDriversCopy)
-  const currentDrivers = allDriversCopy;
+
+  // Obtén la lista de conductores del estado
+  const allDriversCopy = useSelector((state) => state.allDriversCopy) || [];
+  
+  // Asegúrate de tener un array de drivers y no otro tipo de dato
+  const currentDrivers = Array.isArray(allDriversCopy) ? allDriversCopy : [];
+
+  // Calcula los conductores para la página actual
   const pageDrivers = currentDrivers.slice(indexOfFirstDriver, indexOfLastDriver);
+
 
   const handlePageInput = (e) => {
     const newPage = parseInt(e.target.value, 10);
