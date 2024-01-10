@@ -191,7 +191,7 @@ return (
             onChange={handleTeamChange}
           >
 
-            {teams.map((team) => (
+            {Array.isArray(teams) && teams.map((team) => (
               <option key={team.id} value={team.name}>
                 {team.name}
               </option>
