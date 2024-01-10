@@ -45,11 +45,13 @@ const handleTeamChange = (event) => {
   }
 };
     const selectedTeamIds = [];
+    if (Array.isArray(teams)) {
     teams.forEach((team) => {
       if (selectedTeams.includes(team.name)) {
         selectedTeamIds.push(team.id);
       }
     });
+  }
 
 const handleChange = (e) => {
     const {name, value} = e.target;
